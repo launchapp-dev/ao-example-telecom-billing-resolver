@@ -1,0 +1,68 @@
+[
+  {
+    "customer_id": "CUST-001",
+    "account_number": "ACC-8821-4490",
+    "name": "Sarah Mitchell",
+    "email": "sarah.mitchell@email.com",
+    "phone": "555-234-5678",
+    "plan": "unlimited-talk-250",
+    "contract": "standard-2yr",
+    "contract_start": "2024-09-15",
+    "tenure_months": 18,
+    "prior_disputes": 0,
+    "status": "active"
+  },
+  {
+    "customer_id": "CUST-002",
+    "account_number": "ACC-3345-7712",
+    "name": "Carlos Rivera",
+    "email": "carlos.r@bizmail.com",
+    "phone": "555-345-6789",
+    "plan": "business-enterprise",
+    "contract": "business-3yr",
+    "contract_start": "2023-06-01",
+    "tenure_months": 33,
+    "prior_disputes": 1,
+    "status": "active"
+  },
+  {
+    "customer_id": "CUST-003",
+    "account_number": "ACC-9912-3301",
+    "name": "The Johnson Family",
+    "email": "tom.johnson@home.net",
+    "phone": "555-456-7890",
+    "plan": "family-share-1000",
+    "contract": "standard-2yr",
+    "contract_start": "2025-01-10",
+    "tenure_months": 14,
+    "prior_disputes": 2,
+    "status": "active",
+    "lines": 4
+  },
+  {
+    "customer_id": "CUST-004",
+    "account_number": "ACC-5567-8823",
+    "name": "Priya Patel",
+    "email": "priya.patel@consulting.com",
+    "phone": "555-567-8901",
+    "plan": "basic-talk-300",
+    "contract": "month-to-month",
+    "contract_start": "2022-03-20",
+    "tenure_months": 48,
+    "prior_disputes": 1,
+    "status": "active"
+  },
+  {
+    "customer_id": "CUST-005",
+    "account_number": "ACC-7734-2256",
+    "name": "Marcus Thompson",
+    "email": "mthompson@gmail.com",
+    "phone": "555-678-9012",
+    "plan": "unlimited-talk-250",
+    "contract": "standard-1yr",
+    "contract_start": "2025-08-01",
+    "tenure_months": 7,
+    "prior_disputes": 0,
+    "status": "active"
+  }
+]

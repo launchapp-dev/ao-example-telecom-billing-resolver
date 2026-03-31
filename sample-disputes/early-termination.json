@@ -1,0 +1,23 @@
+{
+  "customer_id": "CUST-004",
+  "account_number": "ACC-5567-8823",
+  "customer_name": "Priya Patel",
+  "disputed_amount": 200.00,
+  "billing_period": "2026-03",
+  "dispute_type": "early_termination_fee",
+  "disputed_charges": [
+    {
+      "charge_type": "early_termination",
+      "amount": 200.00,
+      "description": "Early termination fee charged despite being on month-to-month plan"
+    }
+  ],
+  "billing_period_start": "2026-03-01",
+  "billing_period_end": "2026-03-31",
+  "customer_claim": "I have been a month-to-month customer since March 2022. There is no contract and therefore no early termination fee should apply. I changed carriers and was charged $200 which is completely wrong given my plan type.",
+  "contact_info": {
+    "email": "priya.patel@consulting.com",
+    "phone": "555-567-8901",
+    "preferred_contact": "email"
+  }
+}

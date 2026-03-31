@@ -1,0 +1,23 @@
+{
+  "customer_id": "CUST-001",
+  "account_number": "ACC-8821-4490",
+  "customer_name": "Sarah Mitchell",
+  "disputed_amount": 32.50,
+  "billing_period": "2026-03",
+  "dispute_type": "voice_overage",
+  "disputed_charges": [
+    {
+      "charge_type": "voice_overage",
+      "amount": 32.50,
+      "description": "Voice overage charges — billed for 450 minutes over plan limit"
+    }
+  ],
+  "billing_period_start": "2026-03-01",
+  "billing_period_end": "2026-03-31",
+  "customer_claim": "I am on the Unlimited Talk & Text plan and should not be charged for voice overages. I have been billed $32.50 for voice minutes which should be included in my unlimited plan.",
+  "contact_info": {
+    "email": "sarah.mitchell@email.com",
+    "phone": "555-234-5678",
+    "preferred_contact": "email"
+  }
+}

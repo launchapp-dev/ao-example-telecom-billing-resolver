@@ -1,0 +1,9 @@
+customer_id,date,start_time,duration_secs,country,country_code,data_bytes,charge_type,network_type
+CUST-002,2026-03-10,09:00:00,420,United Kingdom,GB,52428800,voice_and_data,4G
+CUST-002,2026-03-11,10:30:00,300,United Kingdom,GB,104857600,voice_and_data,4G
+CUST-002,2026-03-12,08:45:00,180,France,FR,26214400,voice_and_data,4G
+CUST-002,2026-03-12,14:00:00,240,France,FR,78643200,data_only,4G
+CUST-005,2026-03-14,11:00:00,360,Mexico,MX,31457280,voice_and_data,4G
+CUST-005,2026-03-15,09:30:00,180,Mexico,MX,62914560,voice_and_data,4G
+CUST-005,2026-03-15,16:45:00,120,Mexico,MX,15728640,data_only,4G
+CUST-005,2026-03-16,10:00:00,540,Mexico,MX,94371840,voice_and_data,4G

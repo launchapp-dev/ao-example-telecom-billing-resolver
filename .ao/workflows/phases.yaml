@@ -1,0 +1,125 @@
+phases:
+  intake-disputes:
+    mode: command
+    command:
+      program: bash
+      args: ["-c", "bash scripts/intake-disputes.sh"]
+      cwd_mode: project_root
+      timeout_secs: 60
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  parse-tickets:
+    mode: agent
+    agent: ticket-parser
+    directive: |
+      Read the latest intake batch from data/intake/ (the most recent *-batch.json file).
+      For each dispute in the batch, look up the customer in config/customers.json and
+      their rate plan in config/rate-plans.yaml. Write enriched parsed data to
+      data/parsed/{dispute_id}.json for each dispute. Then write
+      data/queue/{date}-queue.json listing all dispute IDs ready for CDR analysis.
+      Use today's date (2026-03-31) for the queue filename if no date is available.
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  analyze-cdrs:
+    mode: agent
+    agent: cdr-analyst
+    directive: |
+      Read the dispute queue from data/queue/ (the most recent *-queue.json file).
+      For each dispute ID, read data/parsed/{dispute_id}.json to get the dispute details
+      including billing period dates. Read the relevant CDR files from data/cdrs/ for that
+      billing period. Reconcile actual usage against billed charges. Write your analysis
+      to data/analysis/{dispute_id}.json. Emit your decision contract as the final JSON
+      output with verdict: "discrepancy-found", "billing-correct", or "needs-escalation".
+    capabilities:
+      mutates_state: true
+      writes_files: true
+    decision_contract:
+      required_fields: [verdict, reasoning]
+
+  determine-eligibility:
+    mode: agent
+    agent: eligibility-engine
+    directive: |
+      Read the CDR analysis from data/analysis/ for all disputes in the current queue.
+      For each dispute, apply the eligibility rules from config/eligibility-rules.yaml,
+      cross-referencing the rate plan (config/rate-plans.yaml) and contract terms
+      (config/contracts.yaml). For complex cases involving overlapping promotions,
+      mid-cycle changes, or ambiguous terms, use sequential-thinking to work through
+      the logic carefully. Write your determination to data/decisions/{dispute_id}.json.
+      Emit your decision contract with verdict: "full-credit", "partial-credit",
+      "goodwill-credit", "no-credit", or "escalate".
+    capabilities:
+      mutates_state: true
+      writes_files: true
+    decision_contract:
+      required_fields: [verdict, reasoning]
+
+  generate-resolution:
+    mode: agent
+    agent: resolution-writer
+    directive: |
+      Read all decisions from data/decisions/ for disputes in the current queue.
+      For each dispute, generate the customer letter (output/letters/), internal memo
+      (output/memos/), and credit memo if applicable (output/credits/).
+      Update data/resolutions/{dispute_id}.json with the final outcome and document paths.
+      Append each resolution to data/resolutions/log.json.
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  aggregate-disputes:
+    mode: command
+    command:
+      program: bash
+      args: ["-c", "bash scripts/aggregate-weekly.sh"]
+      cwd_mode: project_root
+      timeout_secs: 60
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  detect-patterns:
+    mode: agent
+    agent: analytics-reporter
+    directive: |
+      Read the most recent weekly aggregate from data/analytics/weekly/ (most recent *-weekly.json
+      or dated JSON file). Retrieve the "dispute-patterns" entity from memory MCP to compare
+      against historical trends. Analyze the data for systematic billing errors, plan-specific
+      dispute spikes, seasonal patterns, and repeat customers. Update the memory MCP entity
+      with your latest findings. Write a comprehensive weekly report to
+      output/analytics/weekly/{date}.md. Emit your decision contract with verdict:
+      "normal", "pattern-detected", or "urgent-pattern".
+    capabilities:
+      mutates_state: true
+      writes_files: true
+    decision_contract:
+      required_fields: [verdict, reasoning]
+
+  aggregate-monthly:
+    mode: command
+    command:
+      program: bash
+      args: ["-c", "bash scripts/aggregate-monthly.sh"]
+      cwd_mode: project_root
+      timeout_secs: 60
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  write-monthly-report:
+    mode: agent
+    agent: analytics-reporter
+    directive: |
+      Read the monthly aggregate from data/analytics/monthly/ (most recent file).
+      Read all weekly reports from output/analytics/weekly/ for the current month.
+      Retrieve dispute pattern history from memory MCP (entity: "dispute-patterns").
+      Produce a comprehensive monthly executive report at output/analytics/monthly/{month}.md
+      covering KPIs, financial impact, pattern analysis, customer insights, process metrics,
+      and strategic recommendations.
+    capabilities:
+      mutates_state: true
+      writes_files: true

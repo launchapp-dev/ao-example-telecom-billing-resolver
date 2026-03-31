@@ -1,0 +1,26 @@
+default_workflow_ref: resolve-disputes
+
+workflows:
+  - id: resolve-disputes
+    name: "Billing Dispute Resolution"
+    description: "Daily pipeline: intake dispute tickets, validate CDRs, determine credit eligibility, generate resolution letters"
+    phases:
+      - intake-disputes
+      - parse-tickets
+      - analyze-cdrs
+      - determine-eligibility
+      - generate-resolution
+
+  - id: weekly-pattern-analysis
+    name: "Weekly Pattern Analysis"
+    description: "Weekly aggregation and pattern detection across all dispute outcomes"
+    phases:
+      - aggregate-disputes
+      - detect-patterns
+
+  - id: monthly-report
+    name: "Monthly Dispute Analytics Report"
+    description: "Monthly comprehensive billing dispute analytics for executive and operations teams"
+    phases:
+      - aggregate-monthly
+      - write-monthly-report

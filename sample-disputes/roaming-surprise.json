@@ -1,0 +1,28 @@
+{
+  "customer_id": "CUST-005",
+  "account_number": "ACC-7734-2256",
+  "customer_name": "Marcus Thompson",
+  "disputed_amount": 87.40,
+  "billing_period": "2026-03",
+  "dispute_type": "roaming_charges",
+  "disputed_charges": [
+    {
+      "charge_type": "roaming_voice",
+      "amount": 54.00,
+      "description": "International roaming voice charges — Mexico, March 14-16"
+    },
+    {
+      "charge_type": "roaming_data",
+      "amount": 33.40,
+      "description": "International roaming data charges — Mexico, March 14-16"
+    }
+  ],
+  "billing_period_start": "2026-03-01",
+  "billing_period_end": "2026-03-31",
+  "customer_claim": "I was not informed that my plan charges $1.00/min and $0.03/MB for roaming. I traveled to Mexico for a work trip and came back to an $87.40 roaming bill. This feels excessive and I was not warned these charges would apply.",
+  "contact_info": {
+    "email": "mthompson@gmail.com",
+    "phone": "555-678-9012",
+    "preferred_contact": "phone"
+  }
+}

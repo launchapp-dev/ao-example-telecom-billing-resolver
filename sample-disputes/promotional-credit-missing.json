@@ -1,0 +1,23 @@
+{
+  "customer_id": "CUST-003",
+  "account_number": "ACC-9912-3301",
+  "customer_name": "The Johnson Family",
+  "disputed_amount": 25.00,
+  "billing_period": "2026-03",
+  "dispute_type": "missing_promotional_credit",
+  "disputed_charges": [
+    {
+      "charge_type": "promotional_credit_missing",
+      "amount": 25.00,
+      "description": "Promotional credit of $25/month for first 12 months not applied to March 2026 bill"
+    }
+  ],
+  "billing_period_start": "2026-03-01",
+  "billing_period_end": "2026-03-31",
+  "customer_claim": "When I signed up for the Family Share 1000 plan in January 2025, I was told I would receive a $25 monthly credit for the first 12 months. The credit was applied January through February but was missing from my March bill despite being within the promotional period.",
+  "contact_info": {
+    "email": "tom.johnson@home.net",
+    "phone": "555-456-7890",
+    "preferred_contact": "email"
+  }
+}

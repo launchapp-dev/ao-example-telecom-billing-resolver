@@ -1,0 +1,50 @@
+rules:
+  auto_approve:
+    - condition: "billing_system_error"
+      action: full_credit
+      description: "System-confirmed billing error — auto-approve full credit"
+    - condition: "overcharge_under_5"
+      action: goodwill_credit
+      description: "Small discrepancy under $5 — goodwill credit to maintain satisfaction"
+
+  full_credit:
+    - condition: "clear_overcharge_with_cdr_evidence"
+      threshold_min: 5.00
+      description: "CDR evidence confirms billed amount exceeds actual usage"
+    - condition: "promotional_credit_missing"
+      description: "Promotion was active but credit not applied"
+    - condition: "duplicate_charge"
+      description: "Same charge appears twice in billing period"
+
+  partial_credit:
+    - condition: "shared_responsibility"
+      credit_pct: 50
+      description: "Customer exceeded plan limits but rate applied was incorrect"
+    - condition: "late_plan_change"
+      credit_pct: 75
+      description: "Plan change requested but not effective until next cycle"
+
+  goodwill_credit:
+    - condition: "billing_correct_but_high_value_customer"
+      max_credit: 25.00
+      min_tenure_months: 24
+      max_prior_disputes: 1
+      description: "Billing correct but customer is long-tenured with minimal dispute history"
+
+  escalation:
+    - condition: "disputed_amount_exceeds_threshold"
+      threshold: 500.00
+      description: "High-value dispute requires supervisor review"
+    - condition: "fraud_indicators"
+      description: "Pattern suggests potential fraud (SIM swap, account takeover)"
+    - condition: "legal_threat"
+      description: "Customer has mentioned legal action or regulatory complaint"
+    - condition: "contract_ambiguity"
+      description: "Contract terms are genuinely ambiguous for this scenario"
+
+  denial:
+    - condition: "usage_matches_billing"
+      description: "CDR evidence confirms billed amounts are accurate"
+    - condition: "exceeded_dispute_limit"
+      max_disputes_per_year: 6
+      description: "Customer has exceeded reasonable dispute frequency"

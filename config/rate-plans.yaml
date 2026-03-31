@@ -1,0 +1,75 @@
+plans:
+  - id: basic-talk-300
+    name: "Basic Talk 300"
+    type: postpaid
+    monthly_fee: 29.99
+    included:
+      voice_minutes: 300
+      data_gb: 2
+      sms: unlimited
+    overage:
+      voice_per_min: 0.10
+      data_per_gb: 15.00
+    roaming:
+      voice_per_min: 1.50
+      data_per_mb: 0.05
+
+  - id: unlimited-talk-250
+    name: "Unlimited Talk & Text"
+    type: postpaid
+    monthly_fee: 49.99
+    included:
+      voice_minutes: unlimited
+      data_gb: 10
+      sms: unlimited
+    overage:
+      data_per_gb: 10.00
+    roaming:
+      voice_per_min: 1.00
+      data_per_mb: 0.03
+
+  - id: family-share-1000
+    name: "Family Share 1000"
+    type: postpaid
+    monthly_fee: 79.99
+    max_lines: 5
+    included:
+      voice_minutes: 1000
+      data_gb: 20
+      sms: unlimited
+    overage:
+      voice_per_min: 0.08
+      data_per_gb: 12.00
+    roaming:
+      voice_per_min: 1.25
+      data_per_mb: 0.04
+
+  - id: prepaid-daily
+    name: "Prepaid Daily"
+    type: prepaid
+    daily_fee: 2.00
+    included:
+      voice_minutes: 60
+      data_gb: 0.5
+      sms: 100
+    overage:
+      voice_per_min: 0.15
+      data_per_gb: 20.00
+
+  - id: business-enterprise
+    name: "Business Enterprise"
+    type: postpaid
+    monthly_fee: 149.99
+    included:
+      voice_minutes: unlimited
+      data_gb: 50
+      sms: unlimited
+    overage:
+      data_per_gb: 8.00
+    roaming:
+      voice_per_min: 0.50
+      data_per_mb: 0.02
+    features:
+      - international_calling
+      - voicemail_pro
+      - conference_bridge

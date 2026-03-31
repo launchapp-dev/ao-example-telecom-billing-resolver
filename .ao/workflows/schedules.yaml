@@ -1,0 +1,15 @@
+schedules:
+  - id: daily-dispute-resolution
+    cron: "0 6 * * *"
+    workflow_ref: resolve-disputes
+    enabled: true
+
+  - id: weekly-pattern-analysis
+    cron: "0 9 * * 1"
+    workflow_ref: weekly-pattern-analysis
+    enabled: true
+
+  - id: monthly-dispute-report
+    cron: "0 8 1 * *"
+    workflow_ref: monthly-report
+    enabled: true

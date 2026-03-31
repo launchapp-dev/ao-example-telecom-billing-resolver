@@ -1,0 +1,38 @@
+templates:
+  - id: standard-2yr
+    term_months: 24
+    early_termination_fee: 200.00
+    etf_reduction_per_month: 8.33
+    features:
+      - device_subsidy
+      - locked_rate
+    renewal: auto_month_to_month
+    dispute_window_days: 90
+
+  - id: standard-1yr
+    term_months: 12
+    early_termination_fee: 100.00
+    etf_reduction_per_month: 8.33
+    features:
+      - locked_rate
+    renewal: auto_month_to_month
+    dispute_window_days: 60
+
+  - id: month-to-month
+    term_months: 0
+    early_termination_fee: 0
+    features: []
+    renewal: none
+    dispute_window_days: 60
+
+  - id: business-3yr
+    term_months: 36
+    early_termination_fee: 500.00
+    etf_reduction_per_month: 13.89
+    features:
+      - volume_discount
+      - dedicated_support
+      - locked_rate
+      - device_subsidy
+    renewal: auto_negotiate
+    dispute_window_days: 120

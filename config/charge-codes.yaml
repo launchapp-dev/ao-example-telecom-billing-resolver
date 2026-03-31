@@ -1,0 +1,45 @@
+charge_types:
+  voice:
+    - code: VOC-BASE
+      description: "Monthly voice service base charge"
+    - code: VOC-OVER
+      description: "Voice overage charges"
+    - code: VOC-ROAM
+      description: "Voice roaming charges"
+    - code: VOC-INTL
+      description: "International calling charges"
+
+  data:
+    - code: DAT-BASE
+      description: "Monthly data service base charge"
+    - code: DAT-OVER
+      description: "Data overage charges"
+    - code: DAT-ROAM
+      description: "Data roaming charges"
+
+  fees:
+    - code: FEE-ACT
+      description: "Activation fee"
+    - code: FEE-ETF
+      description: "Early termination fee"
+    - code: FEE-EQP
+      description: "Equipment charge"
+    - code: FEE-LATE
+      description: "Late payment fee"
+    - code: FEE-REST
+      description: "Service restoration fee"
+
+  credits:
+    - code: CRD-ADJ
+      description: "Billing adjustment credit"
+    - code: CRD-GW
+      description: "Goodwill credit"
+    - code: CRD-PROMO
+      description: "Promotional credit"
+    - code: CRD-ERR
+      description: "System error correction credit"
+
+gl_accounts:
+  credit_expense: "6100-CUST-ADJ"
+  goodwill_expense: "6200-CUST-GW"
+  error_correction: "6300-SYS-ERR"
